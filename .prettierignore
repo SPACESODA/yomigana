@@ -1,3 +1,5 @@
-# Ignore HTML files to prevent breaking ruby tags and Japanese text whitespace
+# Ignore HTML and Markdown files to prevent unwanted code/table formatting
 *.html
 **/*.html
+*.md
+**/*.md

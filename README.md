@@ -1,8 +1,8 @@
 # yomigana
 
-Add Japanese readings to a web page without replacing its HTML.
+A non-destructive, client-side Japanese reading annotator that adds native ruby furigana to content using vanilla JavaScript and CSS.
 
-yomigana turns eligible text nodes into native `<ruby>` markup while preserving links, event listeners, and the surrounding DOM. It supports hiragana, katakana, and romaji; works with dynamic content; and can run from a web server or entirely offline.
+**yomigana** turns eligible text nodes into native `<ruby>` markup while preserving links, event listeners, and the surrounding DOM. It supports hiragana, katakana, and romaji; works with dynamic content; and can run from a web server or entirely offline.
 
 [Homepage](https://spacesoda.github.io/yomigana/) · [Full guide](docs.md) · [Online demo](https://spacesoda.github.io/yomigana/demo-online/) · [Offline demo](https://spacesoda.github.io/yomigana/demo-offline/) · [Basic demo](https://spacesoda.github.io/yomigana/demo-basic/) · [Yomu reader](https://spacesoda.github.io/yomigana/yomu/)
 
