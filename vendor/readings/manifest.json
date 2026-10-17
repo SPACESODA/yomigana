@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "version": "3.6.2+20260928191014",
+  "scope": "common-with-compounds",
+  "sourceURL": "https://github.com/scriptin/jmdict-simplified/releases/download/3.6.2%2B20260928191014/jmdict-eng-3.6.2%2B20260928191014.json.tgz",
+  "license": "CC-BY-SA-4.0",
+  "attribution": "JMdict: Electronic Dictionary Research and Development Group; JSON conversion: scriptin/jmdict-simplified",
+  "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "readings": {
+    "file": "readings-8e5e97a3acc3.json",
+    "bytes": 2476123,
+    "gzipBytes": 545388
+  },
+  "words": 44767,
+  "alignment": {
+    "file": "alignment-df2358ea3587.json",
+    "bytes": 4241540,
+    "gzipBytes": 940477,
+    "version": "2.3.1+2026-09-25",
+    "source": "https://github.com/Doublevil/JmdictFurigana",
+    "license": "CC-BY-SA (see upstream data terms)"
+  }
+}

@@ -1,0 +1,6 @@
+Derived JMdict reading data, with definitions removed and optional common-word filtering.
+JMdict: Electronic Dictionary Research and Development Group; JSON conversion: scriptin/jmdict-simplified
+CC-BY-SA-4.0: https://creativecommons.org/licenses/by-sa/4.0/
+Source: https://github.com/scriptin/jmdict-simplified/releases/download/3.6.2%2B20260928191014/jmdict-eng-3.6.2%2B20260928191014.json.tgz
+Optional alignment data: https://github.com/Doublevil/JmdictFurigana (upstream data is Attribution-ShareAlike).
+Dictionary data is licensed separately from application code.

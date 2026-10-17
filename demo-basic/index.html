@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>春の散歩 | 日々の余白</title>
+  <meta name="description" content="桜の季節、いつもの道で見つけた春の風景。ふりがなと一緒に読む、小さな散歩の記録。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2341634c'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='48' fill='white'%3Ey%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../src/yomigana.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="8771ed9f-edd3-4665-bf16-1bc95940af08"></script>
+</head>
+<body>
+  <main>
+    <header><a href="./">日々の余白</a><div class="header-right"><a href="../index.html">TOP</a><span>暮らしの記録</span></div></header>
+    <p class="engine-note">
+      <small>
+        <span>このデモは、辞書サイズの小さい Suzume + JMdict を使用しています。</span>
+        <span class="engine-note-en" lang="en">This demo uses the lightweight Suzume + JMdict engine.</span>
+      </small>
+    </p>
+    <p id="reading-error" role="status" hidden></p>
+    <article aria-labelledby="story-title">
+      <div class="article-meta" data-yomigana-ignore><span>散歩と暮らし</span><time datetime="2026-04-05">2026.04.05</time></div>
+      <h1 id="story-title">桜の季節、<br>ゆっくり歩く。</h1>
+      <p class="intro">いつもの道で見つけた、春の小さな風景。</p>
+      <p>日本では、春になると桜が咲きます。今日は友人と一緒に、近くの公園を歩きました。朝の空気は少し冷たく、川の水は静かに流れていました。</p>
+      <h2>足を止めて、空を見る</h2>
+      <p>桜の木の下で、子供たちが遊んでいます。私たちは温かいお茶を飲みながら、しばらく花を眺めました。</p>
+      <p>忙しい毎日の中では、空を見上げることも忘れてしまいます。今日は本を閉じて、鳥の声を聞いてみました。</p>
+      <p>帰り道で、小さな店に入りました。窓の向こうには、赤い自転車と白い猫が見えます。何気ない一日が、心に残る時間になりました。</p>
+    </article>
+    <footer><span>日々の余白</span><span>読むことから、世界が少し広がる。</span></footer>
+  </main>
+  <script id="yomigana-module" type="module" src="./yomigana-setup.js"></script>
+  <script>
+    if (location.protocol === 'file:') {
+      const notice = document.querySelector('#reading-error');
+      notice.hidden = false;
+      notice.textContent = 'このオンライン用デモは HTTP(S) で開いてください。サーバーなしで使う場合は demo-offline/index.html を開いてください。';
+    } else {
+      document.querySelector('#yomigana-module').addEventListener('error', () => {
+        const notice = document.querySelector('#reading-error');
+        notice.hidden = false;
+        notice.textContent = 'ふりがなのスクリプトを読み込めませんでした。ページを再読み込みしてください。';
+      });
+    }
+  </script>
+</body>
+</html>

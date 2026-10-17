@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>yomu</title>
+  <meta name="description" content="日本語を、読んで聴く。ふりがな表示と音声読み上げに対応した読書ワークスペース。オフラインでも動作します。">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="yomu">
+  <meta property="og:description" content="日本語を、読んで聴く。ふりがな表示と音声読み上げに対応した読書ワークスペース。">
+  <meta property="og:site_name" content="yomu">
+  <meta property="og:image" content="./icon-512.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="yomu">
+  <meta name="twitter:description" content="日本語を、読んで聴く。ふりがな表示と音声読み上げに対応した読書ワークスペース。">
+  <meta name="twitter:image" content="./icon-192.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "yomu",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All",
+    "description": "日本語を、読んで聴く。ふりがな表示と音声読み上げに対応した読書ワークスペース。",
+    "inLanguage": "ja"
+  }
+  </script>
+  <meta name="theme-color" content="#f7f6ef">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="yomu">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2341634c'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='48' fill='white'%3Ey%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../src/yomigana.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="8771ed9f-edd3-4665-bf16-1bc95940af08"></script>
+</head>
+<body>
+  <header class="masthead"><a href="./" class="wordmark">yomu</a><span>日本語を、読んで聴く。</span></header>
+  <main>
+    <section class="workspace" aria-label="読書ワークスペース">
+      <div class="settings">
+        <label class="voice-field" for="voice">日本語の音声<select id="voice" disabled><option>音声を確認しています…</option></select></label>
+        <div class="settings-wrap">
+          <button id="settings-btn" class="settings-btn" type="button" aria-expanded="false" aria-haspopup="dialog" aria-controls="settings-popup" aria-label="設定" title="設定">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+          <div id="settings-popup" class="settings-popup" role="dialog" aria-label="設定" hidden>
+            <div class="setting-item">
+              <label class="setting-label-row" for="romaji">
+                <span class="setting-name">ローマ字</span>
+                <span class="format-switch">
+                  <input id="romaji" type="checkbox" role="switch">
+                  <span class="switch-track" aria-hidden="true"><span></span></span>
+                </span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <label class="setting-label-row" for="copy-reading">
+                <span class="setting-name">読み方をコピー</span>
+                <span class="format-switch">
+                  <input id="copy-reading" type="checkbox" role="switch" checked>
+                  <span class="switch-track" aria-hidden="true"><span></span></span>
+                </span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-label-row">
+                <label for="ruby-size" class="setting-name">ふりがなの大きさ</label>
+                <output id="ruby-size-val" for="ruby-size">68%</output>
+              </div>
+              <input id="ruby-size" type="range" min="35" max="100" value="68" aria-label="ふりがなの大きさ">
+            </div>
+            <div class="setting-item">
+              <div class="setting-label-row">
+                <label for="speech-rate" class="setting-name">読み上げ速度</label>
+                <output id="speech-rate-val" for="speech-rate">1.0×</output>
+              </div>
+              <input id="speech-rate" type="range" min="0.5" max="1.5" step="0.05" value="1.0" aria-label="読み上げ速度">
+            </div>
+            <div class="settings-footer">
+              <button id="reset-settings" class="settings-reset-btn" type="button">初期設定に戻す</button>
+              <div class="settings-links">
+                <a href="../index.html" target="_blank" rel="noopener noreferrer">Made with yomigana</a>
+                <span class="settings-links-divider" aria-hidden="true">|</span>
+                <a href="#" target="_blank" rel="noopener noreferrer">Github</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="reading" class="reading" lang="ja" aria-busy="false">
+        <p>公園の桜が咲きます。朝の空気は少し冷たく、私たちは温かいお茶を飲みました。</p>
+        <p>木漏れ日の中で、穏やかな春の時間が流れていきます。</p>
+      </div>
+      <p id="status" class="status" role="status" hidden></p>
+    </section>
+    <div class="composer-dock">
+      <button id="play" type="button" disabled>読み上げる</button>
+      <form id="composer" class="composer">
+        <textarea id="input" rows="3" maxlength="10000" placeholder="今日、何を読みますか" aria-label="日本語の文章"></textarea>
+        <div class="composer-footer"><span class="hint"><span class="shortcut-hint">改行は Enter · 表示は Ctrl / ⌘ + Enter</span><span id="count">0 / 10,000</span></span><button id="submit" type="submit" aria-label="文章を表示する" title="文章を表示する"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button></div>
+      </form>
+    </div>
+    <noscript>ふりがなと音声を使うには JavaScript を有効にしてください。</noscript>
+  </main>
+  <script src="../dist/offline/kuromoji-dict.js"></script>
+  <script src="../dist/offline/runtime.js"></script>
+  <script src="./speech.js"></script>
+  <script src="./yomigana-overrides.js"></script>
+  <script src="./yomigana-setup.js"></script>
+  <script src="./yomu.js"></script>
+</body>
+</html>

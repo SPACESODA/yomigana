@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>日々の余白 | Online showcase</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2341634c'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='48' fill='white'%3Ey%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="日本語の読みものと、ブラウザーで動くふりがなの実験。">
+  <link rel="stylesheet" href="../src/yomigana.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="8771ed9f-edd3-4665-bf16-1bc95940af08"></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="#top">日々の余白<span>HIBI NO YOHAKU</span></a>
+    <nav aria-label="主なメニュー"><a href="../index.html">TOP</a><a href="#story">読みもの</a><a href="#notebook">読書ノート</a><a href="#try">試してみる</a></nav>
+  </header>
+  <main id="top">
+    <div class="layout">
+      <aside class="reader-tools" aria-label="読み方の設定">
+        <button id="toggle" type="button" aria-pressed="false" disabled>ふりがなを表示</button>
+        <div class="reader-field">
+          <label for="engine">解析エンジン / Engine</label>
+          <select id="engine" aria-describedby="engine-note engine-reload-note" disabled><option value="kuromoji">Kuromoji (IPADIC)</option><option value="suzume">Suzume (JMdict)</option></select>
+          <small id="engine-note">Kuromoji (Full morphological dictionary, ~17 MB, IPADIC)</small>
+          <small id="engine-reload-note">切り替えるとページを再読み込みします。入力中の文章はリセットされます。</small>
+        </div>
+        <div class="reader-field">
+          <label for="reading-format">読み方の表記</label>
+          <select id="reading-format"><option value="hiragana">ひらがな</option><option value="katakana">カタカナ</option><option value="romaji">ローマ字 / Romaji</option></select>
+          <small id="romaji-note" hidden>ローマ字は漢字のまとまりごとに表示します。かなの本文はそのままです。</small>
+        </div>
+        <div class="reader-field size-field">
+          <label class="size-label" for="size">ふりがなの大きさ <output id="size-value" for="size">60%</output></label>
+          <input id="size" type="range" min="35" max="100" value="60">
+        </div>
+        <div class="reader-field">
+          <label for="alignment">ルビの区切り方</label>
+          <select id="alignment"><option value="word">単語単位 / Word grouping</option><option value="kanji">漢字単位 / Per-kanji grouping</option></select>
+          <small>読み方は同じです。漢字単位は、対応する辞書データがある場合に使います。</small>
+        </div>
+        <div class="reader-field">
+          <label for="selection">選択・コピーする文字</label>
+          <select id="selection"><option value="base">本文のみ（標準）</option><option value="both">本文とふりがな</option><option value="reading">読み方（漢字を置き換え）</option></select>
+        </div>
+        <p id="status" role="status" aria-live="polite">読み込みを準備しています…</p>
+        <button id="retry" class="text-button" type="button" hidden>もう一度試す</button>
+        <div class="tool-note">文章はこのブラウザーの中で処理されます。</div>
+      </aside>
+      <div>
+        <article id="story" class="article" data-annotate>
+          <div class="article-meta" data-yomigana-ignore><span>京都・散歩</span><time datetime="2026-04-05">2026.04.05</time><span>約3分</span></div>
+          <h1>桜の季節、<br>京都をゆっくり歩く。</h1>
+          <p class="intro">急がない日には、いつもより少し遠回りを。<br class="desktop-break">川沿いの道で見つけた、春の小さな風景。</p>
+          <div class="byline" data-yomigana-ignore><span class="author-seal" aria-hidden="true">花</span><span>文：小林 花<span class="byline-sub">暮らしと旅の記録</span></span></div>
+          <div class="season-panel" aria-hidden="true"><span class="season-large">春</span><span class="season-caption">川の音。花の色。<br>何も急がない、一日。</span><span class="season-date">KYOTO / APRIL</span></div>
+          <p>日本では、春になると桜が咲きます。今日は友人と一緒に、京都の鴨川を歩きました。朝の空気は少し冷たく、川の水は静かに流れていました。</p>
+          <h2>足を止めると、見えてくるもの</h2>
+          <p>橋を渡ると、小さな公園がありました。桜の木の下で、子供たちが遊んでいます。私たちは<strong>温かいお茶</strong>を飲みながら、しばらく花を眺めました。</p>
+          <p>「きれいだね」と友人が言いました。忙しい毎日の中では、こんなにゆっくり空を見上げることも忘れてしまいます。</p>
+          <blockquote>目的地に着くことよりも、<br>途中の景色を楽しむ日があってもいい。</blockquote>
+          <h2>路地の喫茶店で、一休み</h2>
+          <p>昼ご飯の後、<a href="#notebook">古い喫茶店</a>に入りました。店の名前は「木漏れ日」。窓の向こうには、赤い自転車と白い猫が見えます。</p>
+          <p>私は本を読み、友人は手紙を書きました。難しい言葉があっても、読み方が分かると、文章を読むのが少し楽になります。</p>
+          <p>明日はどこへ行こう。そんなことを考えながら、帰り道で大人も子供も笑っている姿を見ました。何気ない一日が、心に残る旅になりました。</p>
+          <footer class="article-footer" data-yomigana-ignore><span>春の京都から、お届けしました。</span><a href="#top">ページの先頭へ ↑</a></footer>
+        </article>
+        <section id="notebook" class="notebook">
+          <div class="section-heading"><h2>読書ノート</h2><span>文章を追加してみる</span></div>
+          <div id="notes" data-annotate><p>今日の発見：<ruby>珈琲<rt>コーヒー</rt></ruby>を飲みながら、新しい言葉を覚えました。</p></div>
+          <button id="add-note" class="outline-button" type="button">＋ ノートを追加</button>
+          <small>追加した文章にも、自動でふりがなが付きます。もともとあるルビはそのまま。</small>
+        </section>
+        <section id="languages" class="notebook">
+          <div class="section-heading"><h2>多言語のページで試す</h2><span>lang 属性に合わせて表示</span></div>
+          <div id="language-samples" lang="en" data-annotate>
+            <p lang="ja">桜の季節。公園で食べ物を楽しみます。</p>
+            <p lang="zh">中国的春天。日本的公园。</p>
+            <p>English section: 日本語 (not annotated).</p>
+            <p lang="ja" data-yomigana-ignore>除外した文章：桜の季節。</p>
+            <p id="switch-language" lang="zh">桜の季節。</p>
+          </div>
+          <div class="demo-actions">
+            <button id="change-language" class="outline-button" type="button">最後の段落を日本語に切り替える</button>
+            <button id="add-language-note" class="outline-button" type="button">＋ 日本語の段落を追加</button>
+          </div>
+          <small>日本語だけにルビを付けます。言語属性の変更や、後から追加した段落にも対応します。</small>
+        </section>
+        <section id="overrides" class="notebook">
+          <div class="section-heading"><h2>読み方を指定する</h2><span>共通の指定と、この箇所だけの指定</span></div>
+          <div id="override-samples" data-annotate>
+            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>共通の指定：〇〇 → なになに、（笑） → わらい</span><p>お疲れ様です。〇〇です。料理は作れますが、味はまあまあです（笑）。今日は休みです(笑)。</p></div>
+            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>共通の指定：〇〇 → なになに</span><p id="global-override-sample">〇〇と申します。</p></div>
+            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>この箇所だけ：〇〇 → まるまる</span><p>ここでは<span id="local-override-sample" data-ym="まるまる">〇〇</span>と読みます。</p></div>
+            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>文脈に合わせて：深々 → しんしん</span><p>夜が<span id="context-override-sample" data-ym="しんしん">深々</span>と更ける。</p></div>
+          </div>
+          <small>この箇所だけの指定が優先されます。表記・大きさ・コピーの設定は、ほかの文章と同じように使えます。</small>
+          <details class="developer-notes"><summary>指定の書き方</summary>
+            <pre><code>// 共通の読み方：yomigana の overrides オプション
+[
+  { match: '〇〇', annotation: 'なになに' },
+  { match: '（笑）', annotation: 'わらい' },
+  { match: '(笑)', annotation: 'わらい' },
+]
+
+&lt;!-- この箇所だけの読み方：共通の指定より優先 --&gt;
+&lt;span data-ym="まるまる"&gt;〇〇&lt;/span&gt;
+&lt;span data-ym="しんしん"&gt;深々&lt;/span&gt;</code></pre>
+            <p>ひらがな・カタカナで指定すると、上のメニューでひらがな・カタカナ・ローマ字に切り替えられます。</p>
+          </details>
+        </section>
+        <section id="typography" class="notebook">
+          <div class="section-heading"><h2>文字の大きさと縦書き</h2><span>同じ設定で、読みやすく</span></div>
+          <div class="type-samples" data-annotate>
+            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>小さな文字 / 12px</span><p class="sample-12">公園の桜が咲きます。春の季節を楽しみます。</p></div>
+            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>小さな文字 / 14px</span><p class="sample-14">公園の桜が咲きます。春の季節を楽しみます。</p></div>
+            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>本文 / 16px</span><p class="sample-16">公園の桜が咲きます。春の季節を楽しみます。</p></div>
+            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>見出し / 24px</span><p class="sample-24">公園の桜が咲きます。</p></div>
+            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>大きな文字 / 48px</span><p class="sample-48">桜の季節。</p></div>
+          </div>
+          <div class="vertical-scroll" tabindex="0" role="region" aria-label="縦書きの文章。横にスクロールできます。">
+            <div id="vertical-sample" class="vertical-sample" data-annotate>
+              <h3>春の小さな旅</h3>
+              <p>公園の桜が咲きます。友人と一緒に、川の近くを歩きました。</p>
+              <p>温かいお茶を飲みながら、春の季節を楽しみます。</p>
+              <p class="vertical-small">小さな文字でも、読み方を確かめられます。</p>
+            </div>
+          </div>
+          <small>上のスライダーで、すべての読み方の大きさを調整できます。縦書きの文章は横にスクロールできます。</small>
+        </section>
+        <section id="try" class="playground">
+          <div class="section-heading"><h2>あなたの文章で試す</h2><span>小さな実験室</span></div>
+          <label for="input">日本語の文章</label>
+          <textarea id="input" rows="4" maxlength="10000">日本の桜の季節。食べ物を買って、今日も公園へ。取り扱い説明書を読んでから、お申し込みください。</textarea>
+          <div class="input-actions"><span>名前や地名の読み方は、間違うことがあります。</span><button id="convert" class="outline-button" type="button">ふりがなを付ける</button></div>
+          <div id="preview" data-annotate aria-live="polite"><p>ここに結果が表示されます。</p></div>
+          <p id="preview-status" role="status"></p>
+        </section>
+        <details class="developer-notes"><summary>開発者向け：使い方とテスト項目</summary>
+          <p>This online showcase analyzes text in a Web Worker. Kuromoji + IPADIC is the default; Suzume + JMdict is the lightweight alternative. Only the selected engine's assets load. No reading API is used. Optional JmdictFurigana data provides per-kanji grouping for exact matches; otherwise kana-anchor alignment is used. Readings can be incorrect in context.</p>
+          <p>Kuromoji: <a href="../vendor/kuromoji/NOTICE.md">IPADIC notice</a>. Change defaultEngine in yomigana-setup.js to configure this demo.</p>
+          <p>Dictionary data: <a href="https://www.edrdg.org/jmdict/j_jmdict.html">JMdict</a>, converted by <a href="https://github.com/scriptin/jmdict-simplified">jmdict-simplified</a> (CC BY-SA 4.0). Optional alignments: <a href="https://github.com/Doublevil/JmdictFurigana">JmdictFurigana</a>. <a href="../vendor/readings/NOTICE.txt">Data notices</a>.</p>
+          <pre><code>import { yomigana, createLocalProvider } from '../src/index.js';
+const provider = createLocalProvider({ engine: 'kuromoji' });
+const reader = new yomigana({ root: 'article', provider });
+await reader.annotate();
+reader.observe();</code></pre>
+          <p>Test links, bold text, dynamic notes, existing ruby, the size slider and this unannotated code block. The library skips controls and editable content. Text split across inline elements is analyzed separately in this first version.</p>
+          <p>Language filtering is enabled by default: &lt;ja&gt; or inherited lang="ja" or ja-JP is required. Unmarked text is skipped unless assumeJapanese: true is explicitly set. Use data-yomigana-ignore to exclude a subtree. observe() responds to new content, language changes, exclusion/visibility attributes, data-ym changes and edits to generated ruby base text. CSS-only visibility changes are not observed.</p>
+        </details>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><span>日々の余白</span><p>読むことから、世界が少し広がる。</p><span><a href="../index.html">yomigana</a></span></footer>
+  <script src="./demo-controls.js"></script>
+  <script type="module" src="./yomigana-setup.js"></script>
+</body>
+</html>

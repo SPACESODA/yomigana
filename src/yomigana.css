@@ -1,0 +1,38 @@
+/* Scoped to generated ruby; existing publisher annotations keep their styles. */
+ruby[data-yomigana] {
+  ruby-position: over;
+  ruby-align: space-around;
+}
+
+ruby[data-yomigana] > rt {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-size: var(--yomigana-size, var(--yomigana-auto-size, min(.6em, calc(.3em + .3rem))));
+  font-weight: 400;
+  color: var(--yomigana-color, #6a7067);
+  line-height: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+ruby[data-yomigana] > rt[hidden] {
+  display: none;
+}
+
+ruby[data-yomigana][data-reading-format="romaji"] > rt {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0;
+  text-transform: none;
+  text-orientation: mixed;
+}
+
+/* CSS controls highlighting; the copy handler makes clipboard output consistent. */
+ruby[data-yomigana][data-selection="reading"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+ruby[data-yomigana][data-selection="both"] > rt,
+ruby[data-yomigana][data-selection="reading"] > rt {
+  -webkit-user-select: text;
+  user-select: text;
+}

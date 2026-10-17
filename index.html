@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A framework-free JavaScript library for modern Japanese reading annotations. Native ruby with flexible styling, dynamic content, screen-reader &amp; SEO friendliness, and offline support.">
+  <meta name="theme-color" content="#faf8f2">
+  <meta name="robots" content="index, follow">
+  <title>yomigana — Modern Japanese Reading Annotations</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="yomigana — Modern Japanese Reading Annotations">
+  <meta property="og:description" content="A framework-free JavaScript library for modern Japanese reading annotations. Native ruby with flexible styling, dynamic content, and offline-ready.">
+  <meta property="og:site_name" content="yomigana">
+  <meta property="og:image" content="./yomu/icon-512.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="yomigana — Modern Japanese Reading Annotations">
+  <meta name="twitter:description" content="A framework-free JavaScript library for modern Japanese reading annotations. Native ruby with flexible styling, dynamic content, and offline-ready.">
+  <meta name="twitter:image" content="./yomu/icon-192.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "yomigana",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "description": "A framework-free JavaScript library for modern Japanese reading annotations (furigana/ruby)."
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2341634c'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='48' fill='white'%3Ey%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./src/yomigana.css">
+  <link rel="stylesheet" href="./site/styles.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="8771ed9f-edd3-4665-bf16-1bc95940af08"></script>
+</head>
+<body>
+  <a class="skip-link" href="#playground">Skip to playground</a>
+
+  <!-- Top Navigation -->
+  <header class="site-header">
+    <div class="container nav-bar">
+      <div class="brand-wrap">
+        <a href="#top" class="brand-text brand-ruby" aria-label="yomigana (よみがな)">
+          <ruby>yomigana<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">よみがな</span></rt></ruby>
+        </a>
+        <span class="version-badge">v1.0.0</span>
+      </div>
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a class="nav-link" href="#playground">Playground</a>
+        <a class="nav-link" href="#features">Features</a>
+        <a class="nav-link" href="#quickstart">Quickstart</a>
+        <a class="nav-link" href="#demos">Demos</a>
+        <a class="nav-link" href="./yomu/index.html">Yomu <span class="nav-badge">App</span></a>
+      </nav>
+      <a class="nav-cta" href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.3c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.4c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="hero container">
+      <div class="hero-pill">
+        <span class="hero-pill-dot" aria-hidden="true"></span>
+        <span>Client-side processing · Engine-agnostic</span>
+      </div>
+      <h1 class="hero-title">
+        Modern Japanese<br>
+        reading annotations.
+      </h1>
+      <p class="hero-tagline" lang="ja">漢字の上に、読み方を。</p>
+      <p class="hero-desc">
+        A framework-free, engine-agnostic JavaScript library that adds native ruby annotations to Japanese text. Built with flexible styling, dynamic content support, and screen-reader and SEO friendliness, working seamlessly both online and offline.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#playground">
+          <span>Try the Playground</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a class="btn btn-secondary" href="#demos">
+          <span>View Demos</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="hero-install-row">
+        <div class="quick-install" aria-label="Copy import command">
+          <code>import { yomigana } from './src/index.js';</code>
+          <button class="copy-btn" id="hero-copy" type="button" aria-label="Copy code">
+            <span id="hero-copy-text">Copy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Playground Section -->
+    <section id="playground" class="section container" aria-labelledby="playground-title">
+      <div class="section-header">
+        <span class="section-eyebrow">Playground</span>
+        <h2 id="playground-title" class="section-title">Interactive Playground</h2>
+        <p class="section-desc">Type or edit Japanese text below to test reading annotations in real time.</p>
+      </div>
+
+      <div class="playground-card">
+        <!-- Window Title Bar -->
+        <div class="playground-header">
+          <div class="playground-title-group">
+            <div class="playground-dots" aria-hidden="true">
+              <span class="playground-dot"></span>
+              <span class="playground-dot"></span>
+              <span class="playground-dot"></span>
+            </div>
+            <span class="playground-title">yomigana-playground</span>
+          </div>
+          <div id="playground-status" class="playground-status" role="status" aria-live="polite">
+            <span class="status-indicator"></span>
+            <span id="status-text">Loading readings…</span>
+          </div>
+        </div>
+
+        <!-- Controls Toolbar -->
+        <div class="playground-toolbar">
+          <div class="control-group">
+            <span class="control-label">Engine:</span>
+            <div class="seg-control" role="group" aria-label="Engine">
+              <button id="engine-suzume" class="seg-btn active" type="button">Suzume</button>
+              <button id="engine-kuromoji" class="seg-btn" type="button">Kuromoji</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <span class="control-label">Reading:</span>
+            <div class="seg-control" role="group" aria-label="Reading Format">
+              <button id="fmt-hiragana" class="seg-btn active" type="button">ひらがな</button>
+              <button id="fmt-romaji" class="seg-btn" type="button">Romaji</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <span class="control-label">Alignment:</span>
+            <div class="seg-control" role="group" aria-label="Ruby Alignment">
+              <button id="align-word" class="seg-btn active" type="button">Word</button>
+              <button id="align-kanji" class="seg-btn" type="button">Per-Kanji</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <span class="control-label">Size:</span>
+            <div class="slider-group">
+              <input id="ruby-size" class="size-slider" type="range" min="35" max="100" value="60" aria-label="Ruby Font Size">
+              <span id="ruby-size-val" class="slider-val">60%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Sample Presets -->
+        <div class="presets-row" aria-label="Preset Sample Texts">
+          <span style="font-size: 11px; font-weight: 700; color: var(--ink-faint); text-transform: uppercase;">Presets:</span>
+          <button class="preset-chip" type="button" data-text="日本では、春になると桜が咲きます。今日は友人と一緒に、京都の鴨川を歩きました。">桜の季節</button>
+          <button class="preset-chip" type="button" data-text="昼ご飯の後、古い喫茶店に入りました。窓の向こうには、赤い自転車と白い猫が見えます。">喫茶店</button>
+          <button class="preset-chip" type="button" data-text="取り扱い説明書をよく読んでから、お申し込み手続きを行ってください。">説明書</button>
+        </div>
+
+        <!-- Two-pane Playground Area -->
+        <div class="playground-body">
+          <div class="playground-pane pane-input">
+            <div class="pane-label">
+              <span>Input (Edit text)</span>
+              <span id="char-count" style="font-family: var(--font-mono); font-size: 11px;">0 chars</span>
+            </div>
+            <textarea id="playground-input" class="playground-textarea" rows="4" maxlength="5000" aria-label="Japanese input text" placeholder="日本語の文章を入力してください…">日本では、春になると桜が咲きます。今日は友人と一緒に、京都の鴨川を歩きました。朝の空気は少し冷たく、川の水は静かに流れていました。</textarea>
+          </div>
+
+          <div class="playground-pane pane-output">
+            <div class="pane-label">
+              <span>Output (Annotated ruby)</span>
+            </div>
+            <div id="playground-output" class="output-content" lang="ja" aria-label="Annotated Japanese text"><ruby>日本<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">にほん</span></rt></ruby>では、<ruby>春<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">はる</span></rt></ruby>になると<ruby>桜<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">さくら</span></rt></ruby>が<ruby>咲<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">さ</span></rt></ruby>きます。<ruby>今日<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">きょう</span></rt></ruby>は<ruby>友人<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">ゆうじん</span></rt></ruby>と<ruby>一緒<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">いっしょ</span></rt></ruby>に、<ruby>京都<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">きょうと</span></rt></ruby>の<ruby>鴨川<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">かもがわ</span></rt></ruby>を<ruby>歩<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">ある</span></rt></ruby>きました。<ruby>朝<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">あさ</span></rt></ruby>の<ruby>空気<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">くうき</span></rt></ruby>は<ruby>少<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">すこ</span></rt></ruby>し<ruby>冷<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">つめ</span></rt></ruby>たく、<ruby>川<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">かわ</span></rt></ruby>の<ruby>水<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">みず</span></rt></ruby>は<ruby>静<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">しず</span></rt></ruby>かに<ruby>流<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">なが</span></rt></ruby>れていました。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Architecture & Features -->
+    <section id="features" class="section container" aria-labelledby="features-title">
+      <div class="section-header">
+        <span class="section-eyebrow">Features</span>
+        <h2 id="features-title" class="section-title">Flexible Features</h2>
+        <p class="section-desc">Native ruby annotations, flexible engine options, and dynamic DOM support.</p>
+      </div>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8M8 3v2M6 5c0 5 3 8 7 10M11 5c0 5-3 8-7 10M14 21l4-10 4 10M16 17h4"/></svg>
+          </div>
+          <h3 class="feature-title">Three Reading Formats</h3>
+          <p class="feature-desc">Switch between hiragana, katakana, and romaji without changing the original Japanese text.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24m5.66 5.66 4.24 4.24m-4.24-9.9 4.24-4.24m-14.14 14.14 4.24-4.24"/></svg>
+          </div>
+          <h3 class="feature-title">Kana-Anchor Alignment</h3>
+          <p class="feature-desc">Keeps okurigana outside ruby where possible, with optional per-kanji dictionary alignment.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 5 5-12 12-6 1 1-6Z"/><path d="m14 5 5 5"/></svg>
+          </div>
+          <h3 class="feature-title">Reading Overrides</h3>
+          <p class="feature-desc">Set shared readings or correct individual occurrences with <code>data-ym</code>. Local readings take priority.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 4-6 8 6 8M16 4l6 8-6 8M14 3l-4 18"/></svg>
+          </div>
+          <h3 class="feature-title">Precise Language Scoping</h3>
+          <p class="feature-desc">Target Japanese with <code>&lt;ja&gt;</code> or <code>lang="ja"</code>, and exclude any subtree.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h5l3 9 4-18 3 9h5"/></svg>
+          </div>
+          <h3 class="feature-title">DOM Mutation Observer</h3>
+          <p class="feature-desc">Annotate new content and respond to text, language, and reading changes with <code>observe()</code>.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          </div>
+          <h3 class="feature-title">Clean Plain-Text Copying</h3>
+          <p class="feature-desc">Copy original text, displayed readings, or both—without unwanted ruby markup.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m12 8 4 4-4 4M8 12h8"/></svg>
+          </div>
+          <h3 class="feature-title">Accessible Markup</h3>
+          <p class="feature-desc">Keeps original text available to assistive technology while hiding generated readings. Broader screen-reader testing is pending.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h3 class="feature-title">Two Engine Options</h3>
+          <p class="feature-desc">Choose lightweight Suzume, morphological Kuromoji, or your own reading provider.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 class="feature-title">Online & Offline</h3>
+          <p class="feature-desc">Processes text locally in hosted workers or standalone offline scripts. No remote reading API.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- App & Demos -->
+    <section id="demos" class="section container" aria-labelledby="demos-title">
+      <div class="section-header">
+        <span class="section-eyebrow">Demos</span>
+        <h2 id="demos-title" class="section-title">App & Demos</h2>
+        <p class="section-desc">Working implementations across different environments.</p>
+      </div>
+
+      <div class="demos-grid">
+        <!-- App: Yomu -->
+        <article class="demo-card demo-featured">
+          <div>
+            <div class="demo-header">
+              <span class="demo-tag">Reader Application</span>
+            </div>
+            <h3 class="demo-title">Yomu</h3>
+            <p class="demo-desc">Read Japanese with furigana or romaji, and listen with available Japanese browser voices.</p>
+            <div class="demo-preview-box">
+              <ruby>公園<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">こうえん</span></rt></ruby>の<ruby>桜<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">さくら</span></rt></ruby>が<ruby>咲<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">さ</span></rt></ruby>きます。<ruby>朝<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">あさ</span></rt></ruby>の<ruby>空気<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">くうき</span></rt></ruby>は<ruby>少<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">すこ</span></rt></ruby>し<ruby>冷<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">つめ</span></rt></ruby>たく、<ruby>私<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">わたし</span></rt></ruby>たちは<ruby>温<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">あたた</span></rt></ruby>かいお<ruby>茶<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">ちゃ</span></rt></ruby>を<ruby>飲<rt aria-hidden="true"><span data-nosnippet aria-hidden="true">の</span></rt></ruby>みました。
+              <a class="demo-preview-play" href="./yomu/index.html" aria-label="Open Yomu">
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          </div>
+          <a class="demo-action" href="./yomu/index.html">
+            <span>Open Yomu</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <!-- Demos -->
+        <div class="demos-sidebar">
+          <article class="small-demo-card">
+            <h3 class="small-demo-title">
+              <span>Full Demo</span>
+              <span aria-hidden="true">↗</span>
+            </h3>
+            <p class="small-demo-desc">Interactive demonstration featuring alignment options, dynamic note appending, and language switching.</p>
+            <a class="demo-action" href="./demo-online/index.html">Launch Full Demo</a>
+          </article>
+
+          <article class="small-demo-card">
+            <h3 class="small-demo-title">
+              <span>Offline Version</span>
+              <span aria-hidden="true">↗</span>
+            </h3>
+            <p class="small-demo-desc">Standalone build using prebuilt scripts. Runs without a web server directly via <code>file://</code>.</p>
+            <a class="demo-action" href="./demo-offline/index.html">Launch Offline Version</a>
+          </article>
+
+          <article class="small-demo-card">
+            <h3 class="small-demo-title">
+              <span>Basic Demo</span>
+              <span aria-hidden="true">↗</span>
+            </h3>
+            <p class="small-demo-desc">A Japanese article with minimal setup and default annotation settings.</p>
+            <a class="demo-action" href="./demo-basic/index.html">Launch Basic Demo</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quickstart Section -->
+    <section id="quickstart" class="section container" aria-labelledby="quickstart-title">
+      <div class="section-header">
+        <span class="section-eyebrow">Quickstart</span>
+        <h2 id="quickstart-title" class="section-title">Basic setup</h2>
+        <p class="section-desc">Host <code>src/</code> and <code>vendor/</code> together over HTTP(S), then include the stylesheet and annotate a Japanese container.</p>
+      </div>
+
+      <div class="quickstart-card">
+        <div class="quickstart-header">
+          <div class="quickstart-tabs">
+            <span class="code-tab active">index.html</span>
+            <a class="code-tab" href="./docs.md">Docs ↗</a>
+          </div>
+          <button id="code-copy-btn" class="code-copy-btn" type="button">
+            <span id="code-copy-text">Copy code</span>
+          </button>
+        </div>
+        <pre class="code-content"><code><span class="code-comment">&lt;!-- 1. Include default ruby styles --&gt;</span>
+<span class="code-tag">&lt;link</span> <span class="code-attr">rel=</span><span class="code-string">"stylesheet"</span> <span class="code-attr">href=</span><span class="code-string">"./src/yomigana.css"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- 2. Mark Japanese content with lang="ja" --&gt;</span>
+<span class="code-tag">&lt;article</span> <span class="code-attr">id=</span><span class="code-string">"story"</span> <span class="code-attr">lang=</span><span class="code-string">"ja"</span><span class="code-tag">&gt;</span>
+  公園の桜が咲きます。朝の空気は少し冷たく、川の水は静かに流れていました。
+<span class="code-tag">&lt;/article&gt;</span>
+
+<span class="code-comment">&lt;!-- 3. Annotate with vanilla JavaScript --&gt;</span>
+<span class="code-tag">&lt;script</span> <span class="code-attr">type=</span><span class="code-string">"module"</span><span class="code-tag">&gt;</span>
+  <span class="code-keyword">import</span> { yomigana } <span class="code-keyword">from</span> <span class="code-string">'./src/index.js'</span>;
+
+  <span class="code-keyword">const</span> reader = <span class="code-keyword">new</span> <span class="code-func">yomigana</span>({ root: <span class="code-string">'#story'</span> });
+  <span class="code-keyword">await</span> reader.<span class="code-func">annotate</span>();
+  reader.<span class="code-func">observe</span>(); <span class="code-comment">// Watches for dynamic DOM changes</span>
+<span class="code-tag">&lt;/script&gt;</span></code></pre>
+      </div>
+    </section>
+
+    <!-- How it Works Pipeline -->
+    <section class="section container" aria-labelledby="pipeline-title">
+      <div class="section-header">
+        <span class="section-eyebrow">Architecture</span>
+        <h2 id="pipeline-title" class="section-title">Pipeline</h2>
+        <p class="section-desc">Text flow from DOM text nodes to ruby elements.</p>
+      </div>
+
+      <div class="pipeline-steps">
+        <div class="pipeline-step">
+          <span class="step-num">01. Extract</span>
+          <h3 class="step-title">DOM Traversal</h3>
+          <p class="step-desc">A TreeWalker scans eligible text nodes while checking <code>lang="ja"</code> and ignoring excluded elements or <code>[data-yomigana-ignore]</code>.</p>
+        </div>
+
+        <div class="pipeline-step">
+          <span class="step-num">02. Tokenize</span>
+          <h3 class="step-title">Local Analysis</h3>
+          <p class="step-desc">Suzume WebAssembly or Kuromoji segments Japanese text. The playground and demos support switching between both engines.</p>
+        </div>
+
+        <div class="pipeline-step">
+          <span class="step-num">03. Resolve</span>
+          <h3 class="step-title">Readings</h3>
+          <p class="step-desc">Suzume tokens use JMdict lookup and supported inflections. Kuromoji supplies readings directly from its analysis.</p>
+        </div>
+
+        <div class="pipeline-step">
+          <span class="step-num">04. Align & Inject</span>
+          <h3 class="step-title">Ruby Generation</h3>
+          <p class="step-desc">Aligns kana to kanji using kana-anchoring (or per-kanji dictionary records) and inserts native <code>&lt;ruby&gt;</code> elements.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <div class="brand-wrap">
+          <span class="brand-text">yomigana</span>
+        </div>
+        <p>Modern Japanese reading annotations. Vanilla JavaScript and CSS.</p>
+      </div>
+
+      <div class="footer-links-group">
+        <div>
+          <div class="footer-col-title">Showcases</div>
+          <ul class="footer-links">
+            <li><a href="./demo-online/index.html">Full Demo</a></li>
+            <li><a href="./demo-offline/index.html">Offline Version</a></li>
+            <li><a href="./demo-basic/index.html">Basic Demo</a></li>
+            <li><a href="./yomu/index.html">Yomu Reader App</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Documentation</div>
+          <ul class="footer-links">
+            <li><a href="./README.md">README</a></li>
+            <li><a href="./docs.md">Docs</a></li>
+            <li><a href="https://github.com/realanthonyc/myProjects" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Attribution</div>
+          <ul class="footer-links">
+            <li><a href="https://github.com/libraz/suzume" target="_blank" rel="noopener noreferrer">Suzume Tokenizer</a></li>
+            <li><a href="https://www.edrdg.org/jmdict/j_jmdict.html" target="_blank" rel="noopener noreferrer">JMdict</a></li>
+            <li><a href="https://github.com/Doublevil/JmdictFurigana" target="_blank" rel="noopener noreferrer">JmdictFurigana</a></li>
+            <li><a href="https://github.com/takuyaa/kuromoji.js" target="_blank" rel="noopener noreferrer">Kuromoji / IPADIC</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>Project code license not yet selected. <a href="./README.md#status-and-attribution">Attribution &amp; data licenses</a></span>
+      <span>yomigana</span>
+    </div>
+  </footer>
+
+  <script defer src="./site/playground.js"></script>
+</body>
+</html>
