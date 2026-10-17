@@ -356,5 +356,5 @@ Run `npm run dev` to serve the homepage and hosted demos. Build and dictionary m
 
 yomigana includes or derives data from Suzume, JMdict, jmdict-simplified, JmdictFurigana, Kuromoji, and IPADIC. Their code and data use separate licenses. Preserve the relevant files in `vendor/` or `dist/offline/` when distributing those assets.
 
-The package is currently private, and a project code license has not yet been selected.
+yomigana is licensed under the [GNU AGPLv3](LICENSE).
 

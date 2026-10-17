@@ -4,7 +4,7 @@ Add Japanese readings to a web page without replacing its HTML.
 
 yomigana turns eligible text nodes into native `<ruby>` markup while preserving links, event listeners, and the surrounding DOM. It supports hiragana, katakana, and romaji; works with dynamic content; and can run from a web server or entirely offline.
 
-[Homepage](index.html) · [Full guide](docs.md) · [Online demo](demo-online/index.html) · [Offline demo](demo-offline/index.html) · [Basic demo](demo-basic/index.html)
+[Homepage](https://spacesoda.github.io/yomigana/) · [Full guide](docs.md) · [Online demo](https://spacesoda.github.io/yomigana/demo-online/) · [Offline demo](https://spacesoda.github.io/yomigana/demo-offline/) · [Basic demo](https://spacesoda.github.io/yomigana/demo-basic/) · [Yomu reader](https://spacesoda.github.io/yomigana/yomu/)
 
 ## Highlights
 
@@ -70,10 +70,10 @@ Hosted integrations analyze text in a Web Worker. The offline build uses prebuil
 
 | Demo | Use it for |
 | --- | --- |
-| [Online full demo](demo-online/index.html) | Compare engines, formats, grouping, copying, and overrides over HTTP(S). |
-| [Offline full demo](demo-offline/index.html) | Try the same controls without a server or network connection. |
-| [Basic demo](demo-basic/index.html) | See a minimal hosted integration. |
-| [Yomu](yomu/index.html) | Paste text into a dedicated reading and speech tool. |
+| [Online full demo](https://spacesoda.github.io/yomigana/demo-online/) | Compare engines, formats, grouping, copying, and overrides over HTTP(S). |
+| [Offline full demo](https://spacesoda.github.io/yomigana/demo-offline/) | Try the same controls without a server or network connection. |
+| [Basic demo](https://spacesoda.github.io/yomigana/demo-basic/) | See a minimal hosted integration. |
+| [Yomu](https://spacesoda.github.io/yomigana/yomu/) | Paste text into a dedicated reading and speech tool. |
 
 Yomu adds a longer pause after line-leading speaker labels (`申請者：` or `佐藤:`) by using `。` in playback text only. Input and displayed text, times, and URLs stay unchanged. This behavior belongs to the app, not the library or its global overrides.
 
@@ -98,6 +98,6 @@ Build and dictionary maintenance details are in [scripts/MAINTAINER.md](scripts/
 
 ## Status and attribution
 
-The package is currently private and intended for local or static-file installation. A project code license has not yet been selected.
+yomigana is licensed under the [GNU AGPLv3](LICENSE).
 
 yomigana uses [Suzume](https://github.com/libraz/suzume), [JMdict](https://www.edrdg.org/jmdict/j_jmdict.html) via [jmdict-simplified](https://github.com/scriptin/jmdict-simplified), optional [JmdictFurigana](https://github.com/Doublevil/JmdictFurigana) data, and optional [Kuromoji](https://github.com/takuyaa/kuromoji.js) with IPADIC. Preserve the notices and licenses in `vendor/` or `dist/offline/` when distributing their assets.

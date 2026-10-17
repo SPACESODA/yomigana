@@ -1134,6 +1134,17 @@ button:disabled, input:disabled { opacity: .55; cursor: default; }
   color: var(--matcha);
 }
 
+.footer-links strong,
+.footer-highlight {
+  font-weight: 700;
+  color: var(--matcha);
+}
+
+.footer-links a:hover strong,
+.footer-links a:hover .footer-highlight {
+  color: var(--matcha-hover);
+}
+
 .footer-bottom {
   padding-top: 24px;
   border-top: 1px solid var(--line);

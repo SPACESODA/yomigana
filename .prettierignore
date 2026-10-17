@@ -1,0 +1,3 @@
+# Ignore HTML files to prevent breaking ruby tags and Japanese text whitespace
+*.html
+**/*.html

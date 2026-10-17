@@ -3,19 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A framework-free JavaScript library for modern Japanese reading annotations. Native ruby with flexible styling, dynamic content, screen-reader &amp; SEO friendliness, and offline support.">
+  <meta name="description" content="A non-destructive, client-side Japanese reading annotator that adds native ruby furigana to content using vanilla JavaScript and CSS.">
+  <meta name="keywords" content="yomigana, furigana, ruby, kanji, japanese, reading annotations, client-side, non-destructive, vanilla javascript, web library">
   <meta name="theme-color" content="#faf8f2">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://spacesoda.github.io/yomigana/">
   <title>yomigana — Modern Japanese Reading Annotations</title>
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spacesoda.github.io/yomigana/">
   <meta property="og:title" content="yomigana — Modern Japanese Reading Annotations">
-  <meta property="og:description" content="A framework-free JavaScript library for modern Japanese reading annotations. Native ruby with flexible styling, dynamic content, and offline-ready.">
+  <meta property="og:description" content="A non-destructive, client-side Japanese reading annotator that adds native ruby furigana to content using vanilla JavaScript and CSS.">
   <meta property="og:site_name" content="yomigana">
-  <meta property="og:image" content="./yomu/icon-512.png">
+  <meta property="og:image" content="https://spacesoda.github.io/yomigana/yomu/icon-512.png">
+  <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="yomigana — Modern Japanese Reading Annotations">
-  <meta name="twitter:description" content="A framework-free JavaScript library for modern Japanese reading annotations. Native ruby with flexible styling, dynamic content, and offline-ready.">
-  <meta name="twitter:image" content="./yomu/icon-192.png">
+  <meta name="twitter:description" content="A non-destructive, client-side Japanese reading annotator that adds native ruby furigana to content using vanilla JavaScript and CSS.">
+  <meta name="twitter:image" content="https://spacesoda.github.io/yomigana/yomu/icon-512.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -23,7 +27,10 @@
     "name": "yomigana",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "All",
-    "description": "A framework-free JavaScript library for modern Japanese reading annotations (furigana/ruby)."
+    "url": "https://spacesoda.github.io/yomigana/",
+    "description": "A non-destructive, client-side Japanese reading annotator that adds native ruby furigana to content using vanilla JavaScript and CSS.",
+    "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+    "codeRepository": "https://github.com/SPACESODA/yomigana"
   }
   </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2341634c'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='48' fill='white'%3Ey%3C/text%3E%3C/svg%3E">
@@ -50,7 +57,7 @@
         <a class="nav-link" href="#demos">Demos</a>
         <a class="nav-link" href="./yomu/index.html">Yomu <span class="nav-badge">App</span></a>
       </nav>
-      <a class="nav-cta" href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
+      <a class="nav-cta" href="https://github.com/SPACESODA/yomigana" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.3c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.4c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
         <span>GitHub</span>
       </a>
@@ -405,26 +412,27 @@
         <div class="brand-wrap">
           <span class="brand-text">yomigana</span>
         </div>
-        <p>Modern Japanese reading annotations. Vanilla JavaScript and CSS.</p>
+        <p>A non-destructive, client-side Japanese reading annotator that adds native ruby furigana to content using vanilla JavaScript and CSS.</p>
       </div>
 
       <div class="footer-links-group">
         <div>
           <div class="footer-col-title">Showcases</div>
           <ul class="footer-links">
-            <li><a href="./demo-online/index.html">Full Demo</a></li>
-            <li><a href="./demo-offline/index.html">Offline Version</a></li>
-            <li><a href="./demo-basic/index.html">Basic Demo</a></li>
-            <li><a href="./yomu/index.html">Yomu Reader App</a></li>
+            <li><a href="./demo-online/index.html"><strong class="footer-highlight">Full Demo</strong></a></li>
+            <li><a href="./demo-offline/index.html"><strong class="footer-highlight">Offline Demo</strong></a></li>
+            <li><a href="./demo-basic/index.html"><strong class="footer-highlight">Basic Demo</strong></a></li>
+            <li><a href="./yomu/index.html"><strong class="footer-highlight">Yomu</strong> Reader App</a></li>
           </ul>
         </div>
 
         <div>
           <div class="footer-col-title">Documentation</div>
           <ul class="footer-links">
-            <li><a href="./README.md">README</a></li>
-            <li><a href="./docs.md">Docs</a></li>
-            <li><a href="https://github.com/realanthonyc/myProjects" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="https://github.com/SPACESODA/yomigana#readme" target="_blank" rel="noopener noreferrer">README</a></li>
+            <li><a href="https://github.com/SPACESODA/yomigana/blob/main/docs.md" target="_blank" rel="noopener noreferrer">Docs</a></li>
+            <li><a href="https://github.com/SPACESODA/yomigana/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">License (AGPL-3.0)</a></li>
+            <li><a href="https://github.com/SPACESODA/yomigana" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
           </ul>
         </div>
 
@@ -441,7 +449,7 @@
     </div>
 
     <div class="container footer-bottom">
-      <span>Project code license not yet selected. <a href="./README.md#status-and-attribution">Attribution &amp; data licenses</a></span>
+      <span>Released under the <a href="https://github.com/SPACESODA/yomigana/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">GNU AGPLv3 License</a>. <a href="https://github.com/SPACESODA/yomigana#status-and-attribution" target="_blank" rel="noopener noreferrer">Attribution &amp; data licenses</a></span>
       <span>yomigana</span>
     </div>
   </footer>
