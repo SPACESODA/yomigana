@@ -40,7 +40,7 @@ test('all public pages include the Umami analytics script in <head>', async () =
 test('homepage Yomu preview includes a dedicated play link', () => {
   const dom = new JSDOM(html);
   const play = dom.window.document.querySelector('.demo-preview-play');
-  assert.equal(play?.getAttribute('href'), './yomu/index.html');
+  assert.equal(play?.getAttribute('href'), './yomu/');
   assert.equal(play?.getAttribute('aria-label'), 'Open Yomu');
   dom.window.close();
 });
