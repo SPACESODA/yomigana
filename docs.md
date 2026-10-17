@@ -2,7 +2,7 @@
 
 yomigana adds Japanese readings to existing web content with native HTML ruby. It keeps the surrounding DOM intact, processes text in the browser, and supports both hosted and standalone offline use.
 
-[Quick start](#hosted-quick-start) · [Offline setup](#offline-setup) · [Language scope](#choose-which-text-to-annotate) · [Overrides](#correct-a-reading) · [API](#api-reference) · [Troubleshooting](#troubleshooting)
+[Homepage](https://spacesoda.github.io/yomigana/) · [README](README.md) · [Quick start](#hosted-quick-start) · [Offline setup](#offline-setup) · [Language scope](#choose-which-text-to-annotate) · [Overrides](#correct-a-reading) · [API](#api-reference) · [Troubleshooting](#troubleshooting)
 
 ## Choose a setup
 
@@ -63,7 +63,7 @@ The offline build uses ordinary script tags. Load the assets in this order:
 
 For offline Kuromoji, load `kuromoji-dict.js` instead of `suzume-wasm.js` and `readings.js`, then create the provider with `{ engine: 'kuromoji' }`. Keep `runtime.js` and the relevant notices. Load `alignments.js` only when using per-kanji alignment.
 
-Offline analysis runs on the main thread and may briefly pause during dictionary initialization or long inputs. It requires `DecompressionStream('gzip')`. See the [offline demo](demo-offline/index.html) for a complete example.
+Offline analysis runs on the main thread and may briefly pause during dictionary initialization or long inputs. It requires `DecompressionStream('gzip')`. See the [offline demo](https://spacesoda.github.io/yomigana/demo-offline/) for a complete example.
 
 ## Choose which text to annotate
 
@@ -345,10 +345,10 @@ Providers expose `analyze(texts): Promise<Token[][]>` and `destroy()`. A token c
 
 ## Demos and maintenance
 
-- [Basic demo](demo-basic/index.html): minimal hosted integration.
-- [Online full demo](demo-online/index.html): engines, formats, alignment, copying, overrides, and dynamic content.
-- [Offline full demo](demo-offline/index.html): the same features without a server or network connection, including `file://`.
-- [Yomu](yomu/index.html): standalone reading and speech tool.
+- [Basic demo](https://spacesoda.github.io/yomigana/demo-basic/): minimal hosted integration.
+- [Online full demo](https://spacesoda.github.io/yomigana/demo-online/): engines, formats, alignment, copying, overrides, and dynamic content.
+- [Offline full demo](https://spacesoda.github.io/yomigana/demo-offline/): the same features without a server or network connection, including `file://`.
+- [Yomu](https://spacesoda.github.io/yomigana/yomu/): standalone reading and speech tool.
 
 Run `npm run dev` to serve the homepage and hosted demos. Build and dictionary maintenance details are in [scripts/MAINTAINER.md](scripts/MAINTAINER.md).
 
