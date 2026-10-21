@@ -1,6 +1,6 @@
 {
   "name": "yomigana",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Automatic Japanese reading annotations for the web.",
   "private": true,
   "type": "module",
