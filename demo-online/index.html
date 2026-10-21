@@ -89,22 +89,22 @@
         <section id="overrides" class="notebook">
           <div class="section-heading"><h2>読み方を指定する</h2><span>共通の指定と、この箇所だけの指定</span></div>
           <div id="override-samples" data-annotate>
-            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>共通の指定：〇〇 → なになに、（笑） → わらい</span><p>お疲れ様です。〇〇です。料理は作れますが、味はまあまあです（笑）。今日は休みです(笑)。</p></div>
-            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>共通の指定：〇〇 → なになに</span><p id="global-override-sample">〇〇と申します。</p></div>
-            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>この箇所だけ：〇〇 → まるまる</span><p>ここでは<span id="local-override-sample" data-ym="まるまる">〇〇</span>と読みます。</p></div>
+            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>共通の指定：○○ → なになに、（笑） → わらい</span><p>お疲れ様です。○○です。料理は作れますが、味はまあまあです（笑）。今日は休みです(笑)。</p></div>
+            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>共通の指定：○○ → なになに</span><p id="global-override-sample">○○と申します。</p></div>
+            <div class="type-sample"><span class="sample-label" data-yomigana-ignore>この箇所だけ：○○ → まるまる</span><p>ここでは<span id="local-override-sample" data-ym="まるまる">○○</span>と読みます。</p></div>
             <div class="type-sample"><span class="sample-label" data-yomigana-ignore>文脈に合わせて：深々 → しんしん</span><p>夜が<span id="context-override-sample" data-ym="しんしん">深々</span>と更ける。</p></div>
           </div>
           <small>この箇所だけの指定が優先されます。表記・大きさ・コピーの設定は、ほかの文章と同じように使えます。</small>
           <details class="developer-notes"><summary>指定の書き方</summary>
             <pre><code>// 共通の読み方：yomigana の overrides オプション
 [
-  { match: '〇〇', annotation: 'なになに' },
+  { match: '○○', annotation: 'なになに' },
   { match: '（笑）', annotation: 'わらい' },
   { match: '(笑)', annotation: 'わらい' },
 ]
 
 &lt;!-- この箇所だけの読み方：共通の指定より優先 --&gt;
-&lt;span data-ym="まるまる"&gt;〇〇&lt;/span&gt;
+&lt;span data-ym="まるまる"&gt;○○&lt;/span&gt;
 &lt;span data-ym="しんしん"&gt;深々&lt;/span&gt;</code></pre>
             <p>ひらがな・カタカナで指定すると、上のメニューでひらがな・カタカナ・ローマ字に切り替えられます。</p>
           </details>

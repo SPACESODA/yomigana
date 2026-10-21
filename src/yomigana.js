@@ -59,8 +59,12 @@ export class yomigana {
     return job;
   }
   _eligible(node) {
-    return this.root.contains(node) && !node.parentElement?.closest(SKIP) && this._languageAllowed(node.parentElement)
-      && hasKanji(this._occurrence(node)?.text || node.data) && this.processed.get(node) !== node.data;
+    if (!this.root.contains(node) || node.parentElement?.closest(SKIP) || !this._languageAllowed(node.parentElement)
+      || this.processed.get(node) === node.data) return false;
+    const occurrence = this._occurrence(node);
+    const text = occurrence?.text || node.data;
+    return hasKanji(text) || (/○/u.test(text) && Boolean(occurrence || normalizeOverrides(this.overrides)
+      .some(rule => rule.annotation !== undefined && text.includes(rule.match))));
   }
   _occurrence(node) {
     const element = node.parentElement;
@@ -108,7 +112,7 @@ export class yomigana {
         const original = occurrence?.text || node.data;
         const parts = [];
         if (occurrence) {
-          parts.push(...annotationsFromTokens(original, occurrence.tokens, {}, { readingFormat: this.readingFormat }));
+          parts.push(...annotationsFromTokens(original, occurrence.tokens, [{ match: original, annotation: occurrence.reading }], { readingFormat: this.readingFormat }));
         } else {
           // Bound work per request while keeping normal sentences together.
           const chunks = original.match(/[^。！？\n]{1,1000}(?:[。！？\n]|$)|[。！？\n]|[^。！？\n]{1,1000}/gu) || [original];

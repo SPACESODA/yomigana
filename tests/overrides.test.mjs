@@ -17,11 +17,11 @@ function tokens(text) {
 const provider = { async analyze(texts) { return texts.map(tokens); } };
 
 test('literal app overrides cross token boundaries, preserve punctuation and convert all display formats', () => {
-  const text = '〇〇です（笑）。(笑) 笑み';
+  const text = '○○です（笑）。(笑) 笑み';
   for (const [readingFormat, placeholder, laughter] of [['hiragana', 'なになに', 'わらい'], ['katakana', 'ナニナニ', 'ワライ'], ['romaji', 'naninani', 'warai']]) {
     const parts = annotationsFromTokens(text, tokens(text), appOverrides, { readingFormat });
     assert.equal(parts.map(part => part.text).join(''), text);
-    assert.equal(parts.find(part => part.text === '〇〇').reading, placeholder);
+    assert.equal(parts.find(part => part.text === '○○').reading, placeholder);
     assert.deepEqual(parts.filter(part => part.text === '笑').slice(0, 2).map(part => part.reading), [laughter, laughter]);
     assert.ok(parts.filter(part => part.reading).every(part => !/[（）()]/.test(part.text)));
     assert.equal(parts.filter(part => part.text === '笑').at(-1).reading, readingFormat === 'hiragana' ? 'えみ' : readingFormat === 'katakana' ? 'エミ' : 'emi');
@@ -29,9 +29,9 @@ test('literal app overrides cross token boundaries, preserve punctuation and con
 });
 
 test('longest match wins, exact widths differ, replacements are not processed twice', () => {
-  const rules = [{ match: '〇', annotation: 'まる' }, { match: '〇〇', annotation: 'なになに' },
+  const rules = [{ match: '○', annotation: 'まる' }, { match: '○○', annotation: 'なになに' },
     { match: 'なになに', speech: 'REPLACED' }];
-  assert.equal(prepareSpeechText('〇〇と〇', { overrides: rules }), 'なになにとまる');
+  assert.equal(prepareSpeechText('○○と○', { overrides: rules }), 'なになにとまる');
   assert.equal(prepareSpeechText('（笑）(笑)（ 笑 ）', { overrides: appOverrides }), '（わらい）(わらい)（ 笑 ）');
   assert.equal(prepareSpeechText('笑う、笑顔、笑み、微笑、笑', { overrides: appOverrides }), '笑う、笑顔、笑み、微笑、笑');
 });
@@ -65,13 +65,13 @@ test('literal matches may cut a token without inventing readings for its remaini
 });
 
 test('DOM speech combines ruby and emphasis safely, preserves line breaks and local priority', async () => {
-  const dom = new JSDOM('<article lang="ja">〇〇です（笑）。<br><b>(</b>笑<i>)</i>。<span data-ym="まるまる">〇〇</span><span data-ym="えみ">笑</span><span aria-hidden="true">隠す</span></article>');
+  const dom = new JSDOM('<article lang="ja">○○です（笑）。<br><b>(</b>笑<i>)</i>。<span data-ym="まるまる">○○</span><span data-ym="えみ">笑</span><span aria-hidden="true">隠す</span></article>');
   const root = dom.window.document.querySelector('article');
   const reader = new yomigana({ root, provider, overrides: appOverrides });
   await reader.annotate();
   assert.equal(reader.speechText(), 'なになにです（わらい）。\n(わらい)。まるまるえみ');
   assert.equal(root.querySelector('[data-ym="まるまる"] rt').textContent, 'まるまる');
-  assert.equal(root.querySelector('ruby').textContent, '〇〇なになに');
+  assert.equal(root.querySelector('ruby').textContent, '○○なになに');
   assert.ok(root.querySelector('b') && root.querySelector('i'));
   await reader.setReadingFormat('romaji');
   reader.setVisible(false);
@@ -93,12 +93,12 @@ test('annotation matches cross sentence chunks but never flatten author formatti
 });
 
 test('global override list is optional and does not activate on a generic reader', async () => {
-  const dom = new JSDOM('<article lang="ja">〇〇</article>');
+  const dom = new JSDOM('<article lang="ja">○○</article>');
   const root = dom.window.document.querySelector('article');
   const reader = new yomigana({ root, provider });
   await reader.annotate();
   assert.equal(root.querySelector('ruby'), null);
-  assert.equal(reader.speechText(), '〇〇');
+  assert.equal(reader.speechText(), '○○');
   reader.destroy();
   dom.window.close();
 });
@@ -115,4 +115,37 @@ test('speech preparation honors data-ym on native and rendered Japanese scopes',
 test('application-specific empty-bottle sentence is not a library global preset', () => {
   const text = '飲み干して空にしました。';
   assert.equal(prepareSpeechText(text, { overrides: appOverrides }), text);
+});
+
+
+test('white-circle placeholders include titles and never override ideographic zeros', () => {
+  for (const text of ['○○', '○○先生', '（○○）']) {
+    for (const [readingFormat, expected] of [['hiragana','なになに'],['katakana','ナニナニ'],['romaji','naninani']]) {
+      const parts = annotationsFromTokens(text, tokens(text), appOverrides, { readingFormat });
+      assert.equal(parts.map(part => part.text).join(''), text);
+      assert.equal(parts.find(part => part.text === '○○').reading, expected);
+    }
+  }
+  assert.equal(prepareSpeechText('○○先生と〇〇先生', {overrides:appOverrides}), 'なになに先生と〇〇先生');
+  assert.equal(prepareSpeechText('（○○）', {overrides:appOverrides}), '（なになに）');
+  assert.ok(!annotationsFromTokens('〇〇先生', tokens('〇〇先生'), appOverrides).some(part => part.reading === 'なになに'));
+});
+
+
+test('circle-only DOM nodes honor global and local overrides while numeric zeros stay literal', async () => {
+  const dom = new JSDOM('<article lang="ja"><p id="plain">○○</p><p id="title">○○先生</p><p id="zero">〇〇</p><span data-ym="まるまる">○○</span></article>');
+  const root = dom.window.document.querySelector('article');
+  const reader = new yomigana({ root, provider, overrides: appOverrides });
+  try {
+    await reader.annotate();
+    assert.equal(root.querySelector('#plain rt').textContent, 'なになに');
+    assert.equal(root.querySelector('#title rt').textContent, 'なになに');
+    assert.equal(root.querySelector('[data-ym] rt').textContent, 'まるまる');
+    assert.equal(root.querySelector('#zero ruby'), null);
+    assert.equal(reader.speechText(root.querySelector('#zero')), '〇〇');
+    assert.equal(reader.speechText(root.querySelector('[data-ym]')), 'まるまる');
+    await reader.setReadingFormat('romaji');
+    assert.equal(root.querySelector('#plain rt').textContent, 'naninani');
+    assert.equal(root.querySelector('[data-ym] rt').textContent, 'marumaru');
+  } finally { reader.destroy(); dom.window.close(); }
 });

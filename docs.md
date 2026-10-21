@@ -196,13 +196,15 @@ Supported separators include spaces, `・`, `、`, `。`, wave dashes, Japanese 
 
 ```js
 const overrides = [
-  { match: '〇〇', annotation: 'なになに' },
+  { match: '○○', annotation: 'なになに' },
   { match: '（笑）', annotation: 'わらい', speech: '（わらい）' },
 ];
 
 const reader = new yomigana({ root: '#reading', overrides });
 await reader.annotate();
 ```
+
+Use `○○` (U+25CB WHITE CIRCLE) for placeholders such as `○○先生`. The prepared global override reads it as `なになに`; it does not match `〇〇` (U+3007 IDEOGRAPHIC NUMBER ZERO). Numeric zeros keep their ordinary readings.
 
 Matches are literal and case-sensitive. Matching runs left to right; the longest match wins when several begin at the same position. Duplicate matches are rejected.
 

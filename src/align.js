@@ -80,7 +80,12 @@ export function annotationsFromTokens(text, tokens, overrides = [], { readingFor
         if (!part.reading) { parts.push(part); continue; }
         const { prefix, core, suffix } = overrideEdges(part.text);
         if (prefix) parts.push({ text: prefix });
-        if (core) parts.push(...normalAnnotations(core, [{ surface: core, start: 0, end: core.length, reading: part.reading }], { readingFormat }));
+        // Explicit circle-placeholder readings are valid even without kanji.
+        if (core && /^○+$/u.test(core)) {
+          const reading = readingFormat === 'romaji' ? toRomaji(part.reading)
+            : readingFormat === 'katakana' ? toKatakana(part.reading) : toHiragana(part.reading);
+          parts.push({ text: core, reading, alignment: 'grouped' });
+        } else if (core) parts.push(...normalAnnotations(core, [{ surface: core, start: 0, end: core.length, reading: part.reading }], { readingFormat }));
         if (suffix) parts.push({ text: suffix });
       }
     }

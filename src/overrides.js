@@ -95,9 +95,9 @@ export function findOverrideMatches(text, entries, tokens) {
 
 // Surrounding punctuation belongs to the source, never to the kana reading.
 export function overrideEdges(text) {
-  const prefix = text.match(/^[^\p{L}\p{N}々〆]+/u)?.[0] || '';
+  const prefix = text.match(/^[^\p{L}\p{N}々〆○]+/u)?.[0] || '';
   const remaining = text.slice(prefix.length);
-  const suffix = remaining.match(/[^\p{L}\p{N}々〆]+$/u)?.[0] || '';
+  const suffix = remaining.match(/[^\p{L}\p{N}々〆○]+$/u)?.[0] || '';
   return { prefix, core: remaining.slice(0, remaining.length - suffix.length), suffix };
 }
 

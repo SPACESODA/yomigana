@@ -167,7 +167,7 @@ test('Yomu paragraph interaction preserves original speech and text selection', 
     assert.equal(get('reading').children[1].textContent, '昼です。');
     assert.equal(get('reading').children[2].textContent, '夜です。');
 
-    get('input').value = '〇〇です（笑）。今日は休みです(笑)。';
+    get('input').value = '○○です（笑）。今日は休みです(笑)。';
     get('composer').dispatchEvent(new window.Event('submit', { cancelable: true }));
     get('play').click();
     assert.equal(spoken.at(-1).text, 'なになにです（わらい）。');
@@ -316,7 +316,7 @@ test('Yomu service worker precaches offline bundle assets for offline annotation
   const swSource = await readFile(swUrl, 'utf8');
 
   // Verify cache name is updated
-  assert.match(swSource, /const CACHE_NAME = 'yomu-v16';/);
+  assert.match(swSource, /const CACHE_NAME = 'yomu-v17';/);
 
   // Extract CORE_ASSETS
   const match = swSource.match(/const CORE_ASSETS = \[\s*([\s\S]*?)\s*\];/);
@@ -373,7 +373,7 @@ test('Yomu annotates on file:// using the offline bundle without network request
     assert.equal('defaultOverrides' in dom.window.yomiganaWeb, false);
     assert.equal(dom.window.yomiganaWeb.globalOverrides.length, 3);
     assert.notEqual(dom.window.reader.overrides, dom.window.yomiganaWeb.globalOverrides);
-    reading.textContent = '〇〇です（笑）。今日は休みです(笑)。';
+    reading.textContent = '○○です（笑）。今日は休みです(笑)。';
     await dom.window.reader.refresh();
     const readings = [...reading.querySelectorAll('rt')].map(rt => rt.textContent);
     assert.ok(readings.includes('なになに'));
